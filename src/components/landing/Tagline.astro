@@ -49,72 +49,59 @@ const translatePath = useTranslatedPath(lang);
 <script>
 	import { gsap } from "gsap";
 	import { ScrollTrigger } from "gsap/ScrollTrigger";
-	import { SplitText } from "gsap/SplitText";
-	import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
-	import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
-	gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin, MotionPathPlugin);
+	gsap.registerPlugin(ScrollTrigger);
 
 	function init() {
-		const linePath = document.querySelector("#tagline-arrow-path");
+		// Animation du titre
+		const title = document.querySelector(".tagline-title");
+		gsap.from(title, {
+			duration: 1.5,
+			opacity: 0,
+			y: 50,
+			ease: "power4.out",
+			scrollTrigger: {
+				trigger: "#tagline",
+				start: "top center",
+				end: "bottom center",
+				scrub: 0.5
+			}
+		});
 
-		gsap.set(linePath, { drawSVG: 0 });
+		// Animation du sous-titre
+		const subtitle = document.querySelector(".tagline-subtitle");
+		gsap.from(subtitle, {
+			duration: 1.5,
+			opacity: 0,
+			y: 30,
+			delay: 0.3,
+			ease: "power4.out",
+			scrollTrigger: {
+				trigger: "#tagline",
+				start: "top center",
+				end: "bottom center",
+				scrub: 0.5
+			}
+		});
 
-		let otherQTl = gsap
-			.timeline({
-				scrollTrigger: {
-					trigger: ".tagline-arrows",
-					start: "center bottom",
-					end: "center center",
-					markers: false,
-					scrub: 1,
-				},
-			})
-			.to(
-				linePath,
-				{
-					drawSVG: "100%",
-				},
-				"<",
-			)
-			.to(
-				"#tagline-arrow",
-				{
-					opacity: 1,
-					duration: 0.1,
-				},
-				"<",
-			)
-			.to(
-				"#tagline-arrow",
-				{
-					motionPath: {
-						path: "#tagline-arrow-path",
-						align: "#tagline-arrow-path",
-						alignOrigin: [0.5, 0.5],
-						autoRotate: 30,
-					},
-				},
-				0,
-			);
-
-		const split = new SplitText("#services-tagline", { type: "lines" });
-
-		split.lines.forEach((target) => {
-			gsap.to(target, {
-				backgroundPositionX: 0,
-				ease: "none",
-				scrollTrigger: {
-					trigger: target,
-					markers: false,
-					scrub: 1,
-					start: "top bottom-=20%",
-					end: "bottom bottom-=10%",
-				},
-			});
+		// Animation des éléments de la liste
+		const listItems = document.querySelectorAll(".tagline-list li");
+		gsap.from(listItems, {
+			duration: 1,
+			opacity: 0,
+			x: -30,
+			stagger: 0.2,
+			delay: 0.5,
+			ease: "power4.out",
+			scrollTrigger: {
+				trigger: "#tagline",
+				start: "top center",
+				end: "bottom center",
+				scrub: 0.5
+			}
 		});
 	}
 
-	document.removeEventListener("DOMContentLoaded", init); // astro:page-load
-	document.addEventListener("DOMContentLoaded", init); // astro:page-load
+	document.removeEventListener("DOMContentLoaded", init);
+	document.addEventListener("DOMContentLoaded", init);
 </script>

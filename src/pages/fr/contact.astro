@@ -1,0 +1,15 @@
+---
+import ContactForm from "@/components/forms/Contact.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { AstroSeoProps } from "@astrolib/seo";
+
+const seo: AstroSeoProps = {
+    title: "Contact Parallax Studio : Solutions Web Innovantes",
+    description: "Contactez Parallax Studio pour des services de conception web et de SEO experts. Discutons de votre projet et explorons des solutions web de pointe.",
+    canonical: "https://parallaxstudio.fr/fr/contact/",
+};
+---
+
+<BaseLayout seo={seo}>
+    <ContactForm />
+</BaseLayout> 

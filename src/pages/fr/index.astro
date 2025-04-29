@@ -1,0 +1,19 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/landing/Hero.astro";
+import Services from "@components/landing/Services.astro";
+import AllInOne from "@components/landing/AllInOne.astro";
+import Faq from "@components/landing/Faq.astro";
+import Tagline from "@components/landing/Tagline.astro";
+
+const title = "Parallax Studio - Agence Web à Toulouse";
+const description = "Agence web spécialisée dans la création de sites web et d'applications. Basée à Toulouse, nous créons des expériences digitales uniques.";
+---
+
+<BaseLayout title={title} description={description}>
+	<Hero />
+	<Services />
+	<AllInOne />
+	<Tagline />
+	<Faq />
+</BaseLayout> 

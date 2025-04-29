@@ -67,9 +67,8 @@ const points = [
 <script>
 	import { gsap } from "gsap";
 	import { ScrollTrigger } from "gsap/ScrollTrigger";
-	import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 
-	gsap.registerPlugin(ScrollTrigger, MorphSVGPlugin);
+	gsap.registerPlugin(ScrollTrigger);
 
 	function init() {
 		var points = gsap.utils.toArray(".point") as gsap.DOMTarget[];
@@ -103,12 +102,12 @@ const points = [
 				id: "pinning",
 				markers: false,
 				snap: {
-					snapTo: [0, 0.25, 0.5, 0.7, 0.9], // snap to the closest label in the timeline
-					duration: { min: 0.1, max: 0.1 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
-					delay: 1, // wait 1 seconds from the last scroll event before doing the snapping
+					snapTo: [0, 0.25, 0.5, 0.7, 0.9],
+					duration: { min: 0.1, max: 0.1 },
+					delay: 1,
 					inertia: false,
 					directional: false,
-					ease: "power1.inOut", // the ease of the snap animation ("power3" by default)
+					ease: "power1.inOut",
 				},
 			},
 		});
@@ -116,19 +115,51 @@ const points = [
 		points.forEach(function (elem, i) {
 			gsap.set(elem, { position: "absolute", top: 0 });
 
-			// https://codepen.io/zank/pen/oNVjYMM?editors=0010
-			tl.to(indicators[i], { backgroundColor: "white", duration: 0.25 }, i);
-			tl.from((elem as HTMLElement).querySelector("svg"), { autoAlpha: 0 }, i);
-			tl.from((elem as HTMLElement).querySelector("article"), { autoAlpha: 0, translateY: 100 }, i);
+			// Animation des indicateurs
+			tl.to(indicators[i], { 
+				backgroundColor: "white", 
+				duration: 0.25 
+			}, i);
+
+			// Animation des images
+			tl.from((elem as HTMLElement).querySelector("svg"), { 
+				opacity: 0,
+				scale: 0.8,
+				duration: 0.5,
+				ease: "power2.out"
+			}, i);
+
+			// Animation du contenu
+			tl.from((elem as HTMLElement).querySelector("article"), { 
+				opacity: 0,
+				y: 50,
+				duration: 0.5,
+				ease: "power2.out"
+			}, i);
 
 			if (i != points.length - 1) {
-				tl.to(indicators[i], { backgroundColor: "#333333", duration: 0.25 }, i + 0.75);
-				tl.to((elem as HTMLElement).querySelector("article"), { autoAlpha: 0, translateY: -100 }, i + 0.75);
-				tl.to((elem as HTMLElement).querySelector("svg"), { autoAlpha: 0 }, i + 0.75);
+				tl.to(indicators[i], { 
+					backgroundColor: "#333333", 
+					duration: 0.25 
+				}, i + 0.75);
+
+				tl.to((elem as HTMLElement).querySelector("article"), { 
+					opacity: 0,
+					y: -50,
+					duration: 0.5,
+					ease: "power2.in"
+				}, i + 0.75);
+
+				tl.to((elem as HTMLElement).querySelector("svg"), { 
+					opacity: 0,
+					scale: 1.2,
+					duration: 0.5,
+					ease: "power2.in"
+				}, i + 0.75);
 			}
 		});
 	}
 
-	document.removeEventListener("DOMContentLoaded", init); // astro:page-load
-	document.addEventListener("DOMContentLoaded", init); // astro:page-load
+	document.removeEventListener("DOMContentLoaded", init);
+	document.addEventListener("DOMContentLoaded", init);
 </script>

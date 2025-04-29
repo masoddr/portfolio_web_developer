@@ -29,17 +29,21 @@ const { class: className } = Astro.props;
 	</div>
 </section>
 
+<style>
+	.all-in-one-line-path {
+		stroke-dasharray: 2000;
+		stroke-dashoffset: 2000;
+	}
+</style>
+
 <script>
 	import { gsap } from "gsap";
 	import { ScrollTrigger } from "gsap/ScrollTrigger";
-	import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 
-	gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
+	gsap.registerPlugin(ScrollTrigger);
 
 	function init() {
 		const linePath = document.querySelector(".all-in-one-line-path");
-
-		gsap.set(linePath, { drawSVG: 0 });
 
 		gsap.timeline({
 			scrollTrigger: {
@@ -53,13 +57,13 @@ const { class: className } = Astro.props;
 		}).to(
 			linePath,
 			{
-				drawSVG: "100%",
-				// ease: "power4.in",
+				strokeDashoffset: 0,
+				duration: 1,
 			},
 			0,
 		);
 	}
 
-	document.removeEventListener("DOMContentLoaded", init); // astro:page-load
-	document.addEventListener("DOMContentLoaded", init); // astro:page-load
+	document.removeEventListener("DOMContentLoaded", init);
+	document.addEventListener("DOMContentLoaded", init);
 </script>

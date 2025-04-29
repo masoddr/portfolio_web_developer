@@ -1,0 +1,11 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import NotFound from "@components/infopages/Error404.astro";
+
+const title = "Page non trouvée - Parallax Studio";
+const description = "La page que vous recherchez n'existe pas ou a été déplacée.";
+---
+
+<BaseLayout title={title} description={description}>
+	<NotFound />
+</BaseLayout> 

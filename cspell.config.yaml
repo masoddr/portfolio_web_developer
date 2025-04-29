@@ -20,7 +20,8 @@ ignorePaths:
 words:
   - astrolib
   - logoclouds
-  - majestico
+  - parallax
+  - parallaxstudio
   - Satoshi
   - squircle
 overrides:
