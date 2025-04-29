@@ -1,22 +1,18 @@
-# [Mintaka](https://mintaka.majestico.co)
+# [Parallax Studio Website](https://parallaxstudio.fr)
 
-> [!IMPORTANT]
-> Currently this theme only works with the premium version of GSAP, the steps to use the standard version will be available in the future.
+> Portfolio and blog website for Parallax Studio, a web development studio based in Toulouse, France.
 
-<a href="https://astro.build/">![Astro](.github/images/astro-icon.png)</a>
-<a href="https://tailwindcss.com/">![Tailwind](.github/images/tailwind-icon.png)</a>
-<a href="https://gsap.com/">![Gsap](.github/images/gsap.png)</a>
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/tiny.svg)](https://astro.build)
 
-Mintaka is a template made with [Astro](https://astro.build), [Tailwind](https://tailwindcss.com/) and [Gsap](https://gsap.com/)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/parallaxstudio/website)
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/majesticooss/mintaka)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/parallaxstudio/website)
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/majesticooss/mintaka)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/parallaxstudio/website)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/majesticooss/mintaka)
+## 🚀 Project Structure
 
-
-### [🧪 Site preview →](https://mintaka.majestico.co)
+### [🧪 Site preview →](https://parallaxstudio.fr)
 
 ### [🧑‍🚀 Astro website →](https://astro.build/)
 
@@ -42,4 +38,4 @@ On the folder run
 
 ---
 
-<p align="right"><a href="https://majestico.co" target="_blank">majestico.co</p>
+<p align="right"><a href="https://parallaxstudio.fr" target="_blank">parallaxstudio.fr</p>
