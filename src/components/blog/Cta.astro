@@ -1,12 +1,18 @@
 ---
-import Newsletter from "@components/blog/Newsletter.astro";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
-<section class="bg-black">
-	<div class="mx-auto max-w-7xl px-8 py-12 md:px-12 lg:px-32 lg:py-24">
-		<div class="flex flex-col items-center justify-center gap-10 p-8 text-center lg:p-20">
-			<p class="mt-8 font-display text-4xl font-semibold text-white md:text-6xl lg:text-8xl">Subscribe to our newsletter!</p>
-			<Newsletter class="w-full" />
-		</div>
-	</div>
-</section>
+<div class="not-prose my-8 flex flex-col items-center gap-4 rounded-lg bg-zinc-900 p-6 text-center">
+    <h2 class="text-2xl font-bold text-white">Vous avez un projet en tête ?</h2>
+    <p class="text-zinc-400">Discutons de la façon dont nous pouvons le concrétiser ensemble.</p>
+    <a
+        href={translatePath("/contact/")}
+        class="inline-flex items-center justify-center rounded-lg bg-blue-500 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+        {t("contactus")}
+    </a>
+</div> 

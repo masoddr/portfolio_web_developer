@@ -13,18 +13,19 @@ const { class: className } = Astro.props;
 
 const allProjects = (await getCollection("projects"))
 	.filter((prj) => {
-		const [postLang, ...slug] = prj.slug.split("/");
+		const [postLang] = prj.slug.split("/");
 		return postLang === lang;
 	})
 	.map((prj) => {
 		const [postLang, slug] = prj.slug.split("/");
-
 		return {
 			...prj,
 			slug: slug,
 		};
 	})
 	.sort((a, b) => Number(b.data.pubDate) - Number(a.data.pubDate));
+
+console.log("Projects for language", lang, ":", allProjects);
 ---
 
 <section id="projects" class:list={["section work-preview-section home-dark-section py-12", className]}>
@@ -99,17 +100,18 @@ const allProjects = (await getCollection("projects"))
 					scrollTrigger: {
 						trigger: ".work-preview-section ol",
 						start: "top bottom",
-						end: "bottom center",
+						end: "bottom top",
 						scrub: 1,
 						markers: false,
 					},
-					ease: "none",
-					y: `-200px`,
+					ease: "power3.out",
+					y: 0,
+					opacity: 1,
 				});
 			});
 		}
 	}
 
-	document.removeEventListener("DOMContentLoaded", init); // astro:page-load
-	document.addEventListener("DOMContentLoaded", init); // astro:page-load
+	document.removeEventListener("DOMContentLoaded", init);
+	document.addEventListener("DOMContentLoaded", init);
 </script>

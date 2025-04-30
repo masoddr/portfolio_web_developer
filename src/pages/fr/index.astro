@@ -5,15 +5,17 @@ import Services from "@components/landing/Services.astro";
 import AllInOne from "@components/landing/AllInOne.astro";
 import Faq from "@components/landing/Faq.astro";
 import Tagline from "@components/landing/Tagline.astro";
+import WorkPreview from "@components/landing/WorkPreview.astro";
 
 const title = "Parallax Studio - Agence Web à Toulouse";
 const description = "Agence web spécialisée dans la création de sites web et d'applications. Basée à Toulouse, nous créons des expériences digitales uniques.";
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout>
 	<Hero />
 	<Services />
 	<AllInOne />
+	<WorkPreview class="!pt-20 pb-20 lg:!pt-36 lg:pb-40" />
 	<Tagline />
 	<Faq />
 </BaseLayout> 

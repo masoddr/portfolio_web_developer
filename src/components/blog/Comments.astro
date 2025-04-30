@@ -1,36 +1,11 @@
 ---
-/* Generate Giscus from
- * https://giscus.app/
- * you only need to change the following fields:
- * dataset.repo="XXX"
- * dataset.repoId="XXX"
- * dataset.category="XXX"
- * dataset.categoryId="XXX"
- **/
 ---
 
-<div
-	class="prose prose-lg mx-auto pt-20 dark:prose-invert"
-	data-xdata={`{
-				initGiscus: function() {
-					let script = document.createElement('script');
-					script.src = 'https://giscus.app/client.js';
-					script.dataset.repo = 'majesticooss/mintaka';
-					script.dataset.repoId = 'R_kgDOK_K6WQ';
-					script.dataset.category = 'Blog';
-					script.dataset.categoryId = 'DIC_kwDOK_K6Wc4CcGH6';
-					script.dataset.mapping = 'og:title';
-					script.dataset.strict = '0';
-					script.dataset.reactionsEnabled = '1';
-					script.dataset.emitMetadata = '0';
-					script.dataset.inputPosition = 'top';
-					script.dataset.theme = localStorage.theme == 'dark' ? 'dark' : 'light';
-					script.dataset.lang = 'en';
-					script.dataset.loading = 'lazy';
-					script.crossOrigin = 'anonymous';
-					script.async = true;
-					this.$el.appendChild(script);
-				}
-			}`}
-	x-init="initGiscus()">
-</div>
+<div class="not-prose my-8">
+    <h2 class="mb-4 text-2xl font-bold text-white">Commentaires</h2>
+    <div class="rounded-lg bg-zinc-900 p-6">
+        <p class="text-center text-zinc-400">
+            Les commentaires sont temporairement désactivés. Nous travaillons sur une solution pour les réactiver bientôt.
+        </p>
+    </div>
+</div> 

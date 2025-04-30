@@ -13,10 +13,10 @@ export default defineConfig({
 			},
 		},
 	},
-	site: "https://mintaka.co",
+	site: "https://parallaxstudio.fr",
 	i18n: {
-		defaultLocale: "en",
-		locales: ["en", "it"],
+		defaultLocale: "fr",
+		locales: ["fr", "en"],
 	},
 	markdown: {
 		drafts: true,

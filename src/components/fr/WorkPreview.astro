@@ -1,0 +1,37 @@
+import { getCollection } from "astro:content";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+const projects = await getCollection("work");
+
+<section class="section min-h-screen gap-y-10 py-3 lg:gap-y-32">
+    <div class="relative flex-grow"></div>
+    <div class="relative grid grid-cols-6 gap-y-20 lg:grid-cols-12 lg:text-xl">
+        <div class="col-span-6 col-start-1 grid grid-cols-6 gap-6 lg:col-span-8">
+            <div class="col-span-2 col-start-4 flex flex-col gap-2 lg:col-span-3">
+                <h2 class="text-2xl font-bold text-white">Nos Projets</h2>
+                <p class="text-zinc-400">Découvrez nos réalisations les plus récentes</p>
+            </div>
+            <div class="col-span-3 row-start-1 lg:col-span-2 lg:col-start-4 lg:row-start-auto">
+                <div class="flex flex-col gap-2">
+                    <a href="/work/projet-1/" class="text-zinc-400 hover:text-white">Projet 1</a>
+                    <a href="/work/projet-2/" class="text-zinc-400 hover:text-white">Projet 2</a>
+                    <a href="/work/projet-3/" class="text-zinc-400 hover:text-white">Projet 3</a>
+                </div>
+            </div>
+            <div class="col-span-3 mt-10 lg:col-start-4">
+                <div class="relative flex flex-col overflow-hidden">
+                    <a
+                        href="/contact/"
+                        class="inline-flex items-center justify-center rounded-lg bg-blue-500 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                        Contactez-nous
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 

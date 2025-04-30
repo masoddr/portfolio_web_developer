@@ -1,0 +1,49 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/landing/Hero.astro";
+import Services from "@components/landing/Services.astro";
+import AllInOne from "@components/landing/AllInOne.astro";
+import Faq from "@components/landing/Faq.astro";
+import Tagline from "@components/landing/Tagline.astro";
+import WorkPreview from "@components/landing/WorkPreview.astro";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const AstroSeoProps = {
+	title: "Parallax Studio - Web Development Agency in Toulouse",
+	description: "Parallax Studio is a web development agency based in Toulouse, France. We create modern and responsive websites with a focus on user experience.",
+	canonical: "https://parallaxstudio.fr",
+	openGraph: {
+		basic: {
+			title: "Parallax Studio - Web Development Agency in Toulouse",
+			type: "website",
+			image: "https://parallaxstudio.fr/og-image.jpg",
+			url: "https://parallaxstudio.fr",
+		},
+		optional: {
+			description: "Parallax Studio is a web development agency based in Toulouse, France. We create modern and responsive websites with a focus on user experience.",
+		},
+		image: {
+			url: "https://parallaxstudio.fr/og-image.jpg",
+			width: 1200,
+			height: 630,
+			alt: "Parallax Studio - Web Development Agency in Toulouse",
+		},
+	},
+	twitter: {
+		card: "summary_large_image",
+		site: "@parallaxstudio",
+	},
+};
+---
+
+<BaseLayout seo={AstroSeoProps}>
+	<Hero />
+	<WorkPreview class="!pt-20 pb-20 lg:!pt-36 lg:pb-40" />
+	<Services />
+	<AllInOne />
+	<Tagline />
+	<Faq />
+</BaseLayout> 
