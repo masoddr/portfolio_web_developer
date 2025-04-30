@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import yourProjectImage from "@assets/images/projects/yourProject.png";
-import WokCard from "@components/work/WokCard.astro";
 import { getLangFromUrl, useTranslatedPath, useTranslations } from "@i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -34,16 +33,27 @@ console.log("Projects for language", lang, ":", allProjects);
 		<ol class="grid grid-cols-1 gap-24 md:grid-cols-2 lg:gap-44">
 			{
 				allProjects.map((project, index) => (
-					<WokCard
-						image={project.data.image.source}
-						project={project.data.title}
-						link={`/work/${project.slug}`}
-						class={
+					<li
+						class:list={[
+							"group relative",
 							index % 2 === 0
 								? `md:col-start-1 md:row-start-${Math.floor(index / 2) * 2 + 1} md:row-span-2`
-								: `md:col-start-2 md:row-start-${Math.floor(index / 2) * 2 + 2} md:row-span-2`
-						}
-					/>
+								: `md:col-start-2 md:row-start-${Math.floor(index / 2) * 2 + 2} md:row-span-2`,
+						]}
+					>
+						<a href={project.slug} class="block">
+							<Image
+								src={project.data.image.source}
+								alt={project.data.title}
+								class="w-full h-[600px] rounded-lg object-cover transition-transform duration-300 group-hover:scale-105"
+								width={1200}
+								height={800}
+							/>
+							<div class="mt-4">
+								<h3 class="text-xl font-semibold">{project.data.title}</h3>
+							</div>
+						</a>
+					</li>
 				))
 			}
 		</ol>
@@ -98,9 +108,9 @@ console.log("Projects for language", lang, ":", allProjects);
 			projects.forEach((project) => {
 				gsap.to(project, {
 					scrollTrigger: {
-						trigger: ".work-preview-section ol",
+						trigger: project,
 						start: "top bottom",
-						end: "bottom top",
+						end: "top center",
 						scrub: 1,
 						markers: false,
 					},
@@ -112,6 +122,5 @@ console.log("Projects for language", lang, ":", allProjects);
 		}
 	}
 
-	document.removeEventListener("DOMContentLoaded", init);
-	document.addEventListener("DOMContentLoaded", init);
+	init();
 </script>
